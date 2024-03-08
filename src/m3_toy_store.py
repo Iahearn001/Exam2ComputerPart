@@ -1,5 +1,5 @@
 ###############################################################################
-# TODO: 1. (3 pts)
+# DONE: 1. (3 pts)
 #
 #   In this module, we are going to create part of a program that could be used
 #   by a toy store to keep track of prices of various toys.
@@ -13,9 +13,11 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
-
+def get_toy():
+    toy = input("Please enter a toy: ")
+    return toy
 ###############################################################################
-# TODO: 2. (3 pts)
+# DONE: 2. (3 pts)
 #
 #   For this _TODO_, write a function called get_price() that simply prompts
 #   the user for a price like this:
@@ -26,9 +28,11 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
-
+def get_price():
+    price = float(input("Pleae enter a price: "))
+    return price
 ###############################################################################
-# TODO: 3. (5 pts)
+# DONE: 3. (5 pts)
 ##
 #   For this _TODO_, let's first create function called toy_price() that takes
 #   2 parameters:
@@ -43,9 +47,10 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
-
+def toy_price(toy, price):
+    return (toy, price)
 ###############################################################################
-# TODO: 4. (5 pts)
+# DONE: 4. (5 pts)
 #
 #   For this _TODO_, write a function called calculate_total_price() that takes
 #   1 parameter:
@@ -61,7 +66,11 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
-
+def calculate_total_price(toys):
+    total_cost = 0.0
+    for toy, price in toys:
+        total_cost += price
+    return total_cost
 ###############################################################################
 # TODO: 5. (8 pts)
 #
@@ -89,3 +98,23 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+def main():
+    toys = []
+    while True:
+        toy = get_toy()
+        if toy.lower() == "end":
+            break
+        price = get_price()
+        if price == "end":
+            break
+        toys.append(toy_price(toy, price))
+
+    total_cost = calculate_total_price(toys)
+
+    for toy, price in toys:
+        print(f"{toy}: ${price}")
+
+    print(f"Total Cost: ${total_cost}")
+
+main()
+
